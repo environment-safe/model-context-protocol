@@ -11,3 +11,15 @@ const ensureRequire = ()=> (!internalRequire) && (internalRequire = mod.createRe
  * A JSON object
  * @typedef { object } JSON
  */
+
+import { 
+    McpServer, 
+    ResourceTemplate,
+    StdioServerTransport 
+} from '../lib/deps.mjs';
+ 
+export { 
+    McpServer, 
+    ResourceTemplate,
+    StdioServerTransport
+};

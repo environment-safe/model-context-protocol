@@ -58,6 +58,7 @@
         "stubs": [
             "express",
             "module",
+            "node:process",
             "os",
             "fs",
             "path"
@@ -76,11 +77,18 @@
         "@environment-safe/commonjs-builder": "^0.0.3",
         "@environment-safe/jsdoc-builder": "^0.0.2",
         "@open-automaton/moka": "^0.5.2",
+        "@rollup/plugin-commonjs": "^28.0.6",
         "babel-plugin-search-and-replace": "^1.1.1",
         "babel-plugin-transform-import-meta": "^2.2.0",
+        "@rollup/plugin-json": "^6.1.0",
+        "@rollup/plugin-node-resolve": "^16.0.1",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@rollup/plugin-typescript": "^12.1.4",
         "chai": "^4.3.7",
         "eslint": "^8.43.0",
         "husky": "^8.0.3",
+        "rollup": "^4.44.1",
+        "tslib": "^2.8.1",
         "mocha": "^10.2.0"
     },
     "scripts": {
@@ -88,6 +96,8 @@
         "test": "npm run import-test; npm run browser-test; npm run require-test",
         "import-test": "mocha test/test.mjs",
         "require-test": "mocha test/test.cjs",
+        "build-common-dependencies": "rollup --config common-rollup.config.mjs",
+        "build-module-dependencies": "rollup --config module-rollup.config.mjs",
         "build-commonjs": "./node_modules/@environment-safe/commonjs-builder/bin/build.mjs",
         "local-server": "open 'http://localhost:8085/' ; npx http-server -p 8085",
         "headless-browser-test": "npm run headless-chrome-test; npm run headless-firefox-test; npm run headless-safari-test",
@@ -102,6 +112,7 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.13.2",
         "browser-or-node": "^2.1.1"
     }
 }
